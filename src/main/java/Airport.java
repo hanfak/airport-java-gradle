@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Airport {
-//	private Plane[] hanger;
 	private List<Plane> hanger;
 	
 	public Airport(){
@@ -12,6 +11,7 @@ public class Airport {
 	
 	
 	public void instructToLand(Plane plane){
+		plane.land();
 		hanger.add(plane);
 	}
 	
