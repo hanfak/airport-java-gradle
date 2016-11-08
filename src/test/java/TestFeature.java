@@ -8,13 +8,13 @@ public class TestFeature {
 	 * I want to instruct a plane to land at an airport 
 	 * 		and confirm that it has landed 
 	 */
-//    @Test 
-//    public void testUserStory1() {
-//    	  Plane plane = new Plane();
-//        Airport airport = new Airport(plane);
-//        airport.instruct_to_land();
-//        assertEquals(1, airport.getHanger().length);
-//        assertArrayEquals(plane, airport.getHanger()[0]);
-//        assertEquals(true, plane.at_airport());
-//    }
+    @Test 
+    public void testUserStory1() {
+        Plane plane = new Plane();
+        Airport airport = new Airport();
+        airport.instructToLand(plane);
+        assertEquals(1, airport.getHanger().size());
+        assertEquals(plane, airport.getHanger().get(0));
+//        assertEquals(true, plane.atAirport());
+    }
 }
