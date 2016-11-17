@@ -19,13 +19,9 @@ public class TestPlane {
 	 }
 	 
 	 @Test
-	 public void planeAtAirportWhenLanded() {
+	 public void planeAtAirportWhenLanded()  {
 		 Plane plane = new Plane();
-		 try {
-			plane.land();
-		 } catch (PlaneException e) {
-			
-		 }
+		 try { plane.land(); } catch (PlaneException e) {}
 		 assertEquals(true, plane.atAirport());
 	 }
 	 

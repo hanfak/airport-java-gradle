@@ -1,10 +1,18 @@
 import static org.junit.Assert.assertEquals;
 import java.util.List;
+
+import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
 
 public class TestAirport {
+	 private Airport airport;
 	 Plane plane = mock(Plane.class);
+	 
+	 @Before
+	 public void setUp() throws Exception {
+		 airport = 	new Airport();
+	 }
 	
 	 @Test
 	 public void canCreateObject() {
@@ -13,13 +21,11 @@ public class TestAirport {
 	 
 	 @Test
 	 public void testInstructToLandExists() throws PlaneException{
-		 Airport airport = new Airport();
 		 airport.instructToLand(plane);
 	 }
 	 
 	 @Test
 	 public void testStorePlaneInHangerWhenLanded() throws PlaneException{
-		 Airport airport = new Airport();
 		 airport.instructToLand(plane);
 		 List<Plane> storedPlane = airport.getHanger();
 		 assertEquals(storedPlane.get(0), plane);
@@ -27,7 +33,6 @@ public class TestAirport {
 	 
 	 @Test
 	 public void testInstructToLandCallsLandOnPlane() throws PlaneException {
-		 Airport airport = new Airport();
 		 airport.instructToLand(plane);
 		 verify(plane).land();
 	 }
