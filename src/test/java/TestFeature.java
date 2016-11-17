@@ -15,6 +15,6 @@ public class TestFeature {
         airport.instructToLand(plane);
         assertEquals(1, airport.getHanger().size());
         assertEquals(plane, airport.getHanger().get(0));
-//        assertEquals(true, plane.atAirport());
+        assertEquals(true, plane.atAirport());
     }
 }
