@@ -1,14 +1,10 @@
 import static org.junit.Assert.assertEquals;
-
 import java.util.List;
-
 import org.junit.Test;
 import static org.mockito.Mockito.*;
-import org.mockito.Mock;
 
 public class TestAirport {
 	 Plane plane = mock(Plane.class);
-
 	
 	 @Test
 	 public void canCreateObject() {

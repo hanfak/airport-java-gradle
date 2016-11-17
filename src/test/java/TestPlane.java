@@ -8,8 +8,17 @@ public class TestPlane {
 	 }
 	 
 	 @Test
-	 public void planeInAirDefault() {
+	 public void planeInAirByDefault() {
 		 Plane plane = new Plane();
 		 assertEquals(false, plane.atAirport());
 	 }
+	 
+	 @Test
+	 public void planeAtAirportWhenLanded() {
+		 Plane plane = new Plane();
+		 plane.land();
+		 assertEquals(true, plane.atAirport());
+	 }
+	 
+//	 plane cannot land if atAirport
 }
