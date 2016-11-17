@@ -12,13 +12,13 @@ public class TestAirport {
 	 }
 	 
 	 @Test
-	 public void testInstructToLandExists() {
+	 public void testInstructToLandExists() throws PlaneException{
 		 Airport airport = new Airport();
 		 airport.instructToLand(plane);
 	 }
 	 
 	 @Test
-	 public void testStorePlaneInHangerWhenLanded() {
+	 public void testStorePlaneInHangerWhenLanded() throws PlaneException{
 		 Airport airport = new Airport();
 		 airport.instructToLand(plane);
 		 List<Plane> storedPlane = airport.getHanger();
@@ -26,7 +26,7 @@ public class TestAirport {
 	 }
 	 
 	 @Test
-	 public void testInstructToLandCallsLandOnPlane() {
+	 public void testInstructToLandCallsLandOnPlane() throws PlaneException {
 		 Airport airport = new Airport();
 		 airport.instructToLand(plane);
 		 verify(plane).land();

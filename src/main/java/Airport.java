@@ -8,7 +8,7 @@ public class Airport {
 		hanger =  new ArrayList<Plane>();
 	}
 	
-	public void instructToLand(Plane plane){
+	public void instructToLand(Plane plane) throws PlaneException{
 		plane.land();
 		hanger.add(plane);
 	}

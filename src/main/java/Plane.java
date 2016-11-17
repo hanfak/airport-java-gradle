@@ -6,7 +6,10 @@ public class Plane {
 		atAirportStatus = false;
 	}
 	
-	public void land(){
+	public void land() throws PlaneException {
+		if (atAirportStatus==true) {
+			throw new PlaneException("Plane already landed!");
+		}
 		atAirportStatus = true;
 	}
 	
