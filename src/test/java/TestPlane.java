@@ -23,7 +23,7 @@ public class TestPlane {
 	 
 	 @Test
 	 public void planeInAirByDefault() {
-		 assertEquals(false, plane.atAirport());
+		 assertEquals(false, plane.atAirport()); 
 	 }
 	 
 	 @Test
@@ -31,11 +31,16 @@ public class TestPlane {
 		 try { plane.land(); } catch (PlaneException e) {}
 		 assertEquals(true, plane.atAirport());
 	 }
-	 
 
 	 @Test(expected = PlaneException.class) 
 	 public void throwsErrorlandingWhenAtAirport() throws PlaneException {
 		 plane.land();
 		 plane.land();    
+	 }
+	 
+	 @Test
+	 public void planeNotAtAirportWhenDeparted()  {
+		 plane.depart();
+		 assertEquals(false, plane.atAirport());
 	 }
 }

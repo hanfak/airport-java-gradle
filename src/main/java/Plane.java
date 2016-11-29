@@ -14,7 +14,7 @@ public class Plane {
 	}
 	
 	public void depart() {
-		
+		atAirportStatus = false;
 	}
 	
 	public Boolean atAirport() {
