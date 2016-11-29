@@ -49,5 +49,11 @@ public class TestAirport {
 		 assertFalse(airport.getHanger().contains(plane));
 	 }
 	 
+	 @Test
+	 public void InstructToDepartCallsDepartOnPlane() throws PlaneException {
+		 airport.instructToDepart(plane);
+		 verify(plane).depart();
+	 }
+	 
 	 
 }

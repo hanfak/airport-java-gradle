@@ -13,6 +13,10 @@ public class Plane {
 		atAirportStatus = true;
 	}
 	
+	public void depart() {
+		
+	}
+	
 	public Boolean atAirport() {
 		return atAirportStatus;
 	}
