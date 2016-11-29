@@ -17,10 +17,16 @@ public class Airport {
 		return hanger;
 	}
 
-	public void instructToDepart(Plane plane) throws PlaneException {
+	public void instructToDepart(Plane plane) throws PlaneException, AirportException {
+		if ( stormyWeather() ) { 
+			throw new AirportException("Take-off denied. Weather is stormy!"); 
+		}
 		plane.depart();
 		hanger.remove(plane);
 	}
 	
+	protected boolean stormyWeather() {
+        return Math.random() > 0.8;
+    }
 	
 }

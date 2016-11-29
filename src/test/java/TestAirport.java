@@ -60,8 +60,8 @@ public class TestAirport {
 	 @Rule
      public ExpectedException thrown = ExpectedException.none();
 	 
-	 @Test(expected = AirportException.class) 
-	 public void throwsErrorWhenDepartingInStorm() throws AirportException{
+	 @Test
+	 public void throwsErrorWhenDepartingInStorm() throws AirportException, PlaneException{
 		 //mock weather as stormy
 		 Airport mockAirport = spy(new Airport());
 		 mockAirport.instructToLand(plane);

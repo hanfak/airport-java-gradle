@@ -24,7 +24,7 @@ public class TestFeature {
     I want to instruct a plane to take off from an airport
      and confirm that it is no longer in the airport*/
     @Test
-    public void UserStory2() throws PlaneException {
+    public void UserStory2() throws PlaneException, AirportException {
     	Plane plane = new Plane();
     	Airport airport = new Airport();
     	airport.instructToLand(plane);
