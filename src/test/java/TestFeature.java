@@ -23,12 +23,13 @@ public class TestFeature {
     So I can get passengers on the way to their destination 
     I want to instruct a plane to take off from an airport
      and confirm that it is no longer in the airport*/
-//    @Test
-//    public void UserStory2() {
-//    	Plane plane = new Plane();
-//    	Airport airport = new Airport();
-//    	airport.instructToDepart(plane);
-//    	assertEquals(0,airport.getHanger().size());
-//    	assertFalse(airport.getHanger().contains(plane));
-//    }
+    @Test
+    public void UserStory2() throws PlaneException {
+    	Plane plane = new Plane();
+    	Airport airport = new Airport();
+    	airport.instructToLand(plane);
+    	airport.instructToDepart(plane);
+    	assertFalse(airport.getHanger().contains(plane));
+    	assertFalse(plane.atAirport());
+    }
 }

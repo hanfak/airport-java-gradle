@@ -17,7 +17,7 @@ public class Airport {
 		return hanger;
 	}
 
-	public void instructToDepart(Plane plane) {
+	public void instructToDepart(Plane plane) throws PlaneException {
 		plane.depart();
 		hanger.remove(plane);
 	}

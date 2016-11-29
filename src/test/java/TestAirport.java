@@ -37,7 +37,7 @@ public class TestAirport {
 	 }
 	 
 	 @Test
-	 public void InstructToDepartExists(){
+	 public void InstructToDepartExists() throws PlaneException{
 		 airport.instructToDepart(plane);
 	 }
 	 
