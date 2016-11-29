@@ -1,5 +1,7 @@
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -36,23 +38,39 @@ public class TestAirport {
 		 verify(plane).land();
 	 }
 	 
-	 @Test
-	 public void InstructToDepartExists() throws PlaneException{
-		 airport.instructToDepart(plane);
-	 }
+//	 @Test
+//	 public void InstructToDepartExists() throws PlaneException{
+//		 airport.instructToDepart(plane);
+//	 }
+//	 
+//	 @Test
+//	 public void RemovePlaneFromHangerWhenDeparted() throws PlaneException {
+//		 airport.instructToLand(plane);
+//		 airport.instructToDepart(plane);
+//		 
+//		 assertFalse(airport.getHanger().contains(plane));
+//	 }
+//	 
+//	 @Test
+//	 public void InstructToDepartCallsDepartOnPlane() throws PlaneException {
+//		 airport.instructToDepart(plane);
+//		 verify(plane).depart();
+//	 }
 	 
-	 @Test
-	 public void RemovePlaneFromHangerWhenDeparted() throws PlaneException {
-		 airport.instructToLand(plane);
-		 airport.instructToDepart(plane);
+	 @Rule
+     public ExpectedException thrown = ExpectedException.none();
+	 
+	 @Test(expected = AirportException.class) 
+	 public void throwsErrorWhenDepartingInStorm() throws AirportException{
+		 //mock weather as stormy
+		 Airport mockAirport = spy(new Airport());
+		 mockAirport.instructToLand(plane);
+		 when(mockAirport.stormyWeather()).thenReturn(true);
 		 
-		 assertFalse(airport.getHanger().contains(plane));
-	 }
-	 
-	 @Test
-	 public void InstructToDepartCallsDepartOnPlane() throws PlaneException {
-		 airport.instructToDepart(plane);
-		 verify(plane).depart();
+		 thrown.expect(AirportException.class);
+	     thrown.expectMessage("Take-off denied. Weather is stormy!");
+
+		 mockAirport.instructToDepart(plane);
 	 }
 	 
 	 
