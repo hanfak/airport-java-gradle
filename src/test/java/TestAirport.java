@@ -35,4 +35,11 @@ public class TestAirport {
 		 airport.instructToLand(plane);
 		 verify(plane).land();
 	 }
+	 
+	 @Test
+	 public void InstructToDepartExists(){
+		 airport.instructToDepart(plane);
+	 }
+	 
+	 
 }

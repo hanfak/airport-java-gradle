@@ -16,4 +16,10 @@ public class Airport {
 	public List<Plane> getHanger() {
 		return hanger;
 	}
+
+	public void instructToDepart(Plane plane) {
+		
+	}
+	
+	
 }

@@ -1,4 +1,5 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+
 import org.junit.Test;
  
 public class TestFeature {
@@ -17,4 +18,17 @@ public class TestFeature {
         assertEquals(plane, airport.getHanger().get(0));
         assertEquals(true, plane.atAirport());
     }
+    
+    /*As an air traffic controller 
+    So I can get passengers on the way to their destination 
+    I want to instruct a plane to take off from an airport
+     and confirm that it is no longer in the airport*/
+//    @Test
+//    public void UserStory2() {
+//    	Plane plane = new Plane();
+//    	Airport airport = new Airport();
+//    	airport.instructToDepart(plane);
+//    	assertEquals(0,airport.getHanger().size());
+//    	assertFalse(airport.getHanger().contains(plane));
+//    }
 }
