@@ -1,5 +1,4 @@
 import static org.junit.Assert.assertEquals;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -7,7 +6,7 @@ import static org.mockito.Mockito.*;
 
 public class TestAirport {
 	 private Airport airport;
-	 Plane plane = mock(Plane.class);
+	 private Plane plane = mock(Plane.class);
 	 
 	 @Before
 	 public void setUp() throws Exception {
@@ -20,19 +19,19 @@ public class TestAirport {
 	 }
 	 
 	 @Test
-	 public void testInstructToLandExists() throws PlaneException{
+	 public void InstructToLandExists() throws PlaneException{
 		 airport.instructToLand(plane);
 	 }
 	 
 	 @Test
-	 public void testStorePlaneInHangerWhenLanded() throws PlaneException{
+	 public void StorePlaneInHangerWhenLanded() throws PlaneException{
 		 airport.instructToLand(plane);
-		 List<Plane> storedPlane = airport.getHanger();
-		 assertEquals(storedPlane.get(0), plane);
+
+		 assertEquals(airport.getHanger().get(0), plane);
 	 }
 	 
 	 @Test
-	 public void testInstructToLandCallsLandOnPlane() throws PlaneException {
+	 public void InstructToLandCallsLandOnPlane() throws PlaneException {
 		 airport.instructToLand(plane);
 		 verify(plane).land();
 	 }

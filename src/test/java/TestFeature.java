@@ -9,7 +9,7 @@ public class TestFeature {
 	 * 		and confirm that it has landed 
 	 */
     @Test 
-    public void testUserStory1() throws PlaneException{
+    public void UserStory1() throws PlaneException{
         Plane plane = new Plane();
         Airport airport = new Airport();
         airport.instructToLand(plane);
