@@ -18,7 +18,7 @@ public class Airport {
 	}
 
 	public void instructToDepart(Plane plane) {
-		
+		hanger.remove(plane);
 	}
 	
 	

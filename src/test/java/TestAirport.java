@@ -1,7 +1,7 @@
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
 public class TestAirport {
@@ -39,6 +39,14 @@ public class TestAirport {
 	 @Test
 	 public void InstructToDepartExists(){
 		 airport.instructToDepart(plane);
+	 }
+	 
+	 @Test
+	 public void RemovePlaneFromHangerWhenDeparted() throws PlaneException {
+		 airport.instructToLand(plane);
+		 airport.instructToDepart(plane);
+		 
+		 assertFalse(airport.getHanger().contains(plane));
 	 }
 	 
 	 
