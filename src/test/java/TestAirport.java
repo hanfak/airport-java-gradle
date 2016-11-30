@@ -9,15 +9,16 @@ import static org.mockito.Mockito.*;
 public class TestAirport {
 	 private Airport airport;
 	 private Plane plane = mock(Plane.class);
+	 private Weather mockWeather = mock(Weather.class);
 	 
 	 @Before
 	 public void setUp() throws Exception {
-		 airport = 	new Airport();
+		 airport = 	new Airport(mockWeather);
 	 }
 	
 	 @Test
 	 public void canCreateObject() {
-		 new Airport();
+		 new Airport(mockWeather);
 	 }
 	 
 	 @Test
@@ -59,18 +60,14 @@ public class TestAirport {
 	 
 	 @Rule
      public ExpectedException thrown = ExpectedException.none();
-	 
+
 	 @Test
-	 public void throwsErrorWhenDepartingInStorm() throws AirportException, PlaneException{
-		 //mock weather as stormy
-		 Airport mockAirport = spy(new Airport());
-		 mockAirport.instructToLand(plane);
-		 when(mockAirport.stormyWeather()).thenReturn(true);
+	 public void throwsErrorWhenDepartingInStorm1() throws AirportException, PlaneException{
+		 when(mockWeather.isStormy()).thenReturn(true);
 		 
 		 thrown.expect(AirportException.class);
 	     thrown.expectMessage("Take-off denied. Weather is stormy!");
-
-		 mockAirport.instructToDepart(plane);
+	     airport.instructToDepart(plane);
 	 }
 	 
 	 

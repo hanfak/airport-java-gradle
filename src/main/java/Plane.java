@@ -20,6 +20,7 @@ public class Plane {
 		atAirportStatus = false;
 	}
 	
+//	private??
 	public Boolean atAirport() {
 		return atAirportStatus;
 	}
