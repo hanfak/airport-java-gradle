@@ -51,4 +51,18 @@ public class TestFeature {
     	assertTrue(airport.getHanger().contains(plane));
     	assertTrue(plane.atAirport());
     }
+    
+   /* As an air traffic controller 
+    To ensure safety 
+    I want to prevent landing when weather is stormy */
+//    public void UserStory4() throws PlaneException {
+//    	Plane plane = new Plane();
+//    	Weather mockWeather = mock(Weather.class);
+//    	Airport airport = new Airport(mockWeather);
+//    	when(mockWeather.isStormy()).thenReturn(true);
+//    	try { airport.instructToLand(plane); } catch (AirportException e) {}
+//    	assertFalse(airport.getHanger().contains(plane));
+//    	assertEquals(airport.getHanger().size(), 0);
+//    	assertFalse(plane.atAirport());
+//    }
 }
