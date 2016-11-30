@@ -15,12 +15,11 @@ public class Plane {
 	
 	public void depart() throws PlaneException {
 		if (atAirportStatus==false) {
-			throw new PlaneException("Plane not airport: land plane first to depart!");
+			throw new PlaneException("Plane still in air: land plane first to depart!");
 		}
 		atAirportStatus = false;
 	}
 	
-//	private??
 	public Boolean atAirport() {
 		return atAirportStatus;
 	}

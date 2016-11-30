@@ -40,7 +40,12 @@ public class TestPlane {
 	 
 	 @Test
 	 public void planeNotAtAirportWhenDeparted() throws PlaneException  {
-		 try { plane.depart(); } catch (PlaneException e) {}
+		 try { 
+			 plane.land();
+			 plane.depart(); 
+			 } 
+		 catch (PlaneException e) {}
+		 
 		 assertEquals(false, plane.atAirport());
 	 }
 	 

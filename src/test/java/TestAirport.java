@@ -60,7 +60,7 @@ public class TestAirport {
 	 
 	 @Rule
      public ExpectedException thrown = ExpectedException.none();
-
+	 
 	 @Test
 	 public void throwsErrorWhenDepartingInStorm1() throws AirportException, PlaneException{
 		 when(mockWeather.isStormy()).thenReturn(true);
@@ -69,6 +69,4 @@ public class TestAirport {
 	     thrown.expectMessage("Take-off denied. Weather is stormy!");
 	     airport.instructToDepart(plane);
 	 }
-	 
-	 
 }
