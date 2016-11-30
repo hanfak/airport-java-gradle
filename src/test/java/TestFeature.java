@@ -12,9 +12,11 @@ public class TestFeature {
 	 * 		and confirm that it has landed 
 	 */
     @Test 
-    public void UserStory1() throws PlaneException{
+    public void UserStory1() throws PlaneException, AirportException{
         Plane plane = new Plane();
-        Airport airport = new Airport(new Weather());
+    	Weather mockWeather = mock(Weather.class);
+    	Airport airport = new Airport(mockWeather);
+    	when(mockWeather.isStormy()).thenReturn(false);
         airport.instructToLand(plane);
         assertEquals(1, airport.getHanger().size());
         assertEquals(plane, airport.getHanger().get(0));
@@ -41,12 +43,13 @@ public class TestFeature {
     To ensure safety 
     I want to prevent takeoff when weather is stormy*/
     @Test
-    public void UserStory3() throws PlaneException {
+    public void UserStory3() throws PlaneException, AirportException {
     	Plane plane = new Plane();
     	Weather mockWeather = mock(Weather.class);
     	Airport airport = new Airport(mockWeather);
-    	when(mockWeather.isStormy()).thenReturn(true);
+    	when(mockWeather.isStormy()).thenReturn(false);
     	airport.instructToLand(plane);
+    	when(mockWeather.isStormy()).thenReturn(true);
     	try { airport.instructToDepart(plane); } catch (AirportException e) {}
     	assertTrue(airport.getHanger().contains(plane));
     	assertTrue(plane.atAirport());
@@ -55,14 +58,14 @@ public class TestFeature {
    /* As an air traffic controller 
     To ensure safety 
     I want to prevent landing when weather is stormy */
-//    public void UserStory4() throws PlaneException {
-//    	Plane plane = new Plane();
-//    	Weather mockWeather = mock(Weather.class);
-//    	Airport airport = new Airport(mockWeather);
-//    	when(mockWeather.isStormy()).thenReturn(true);
-//    	try { airport.instructToLand(plane); } catch (AirportException e) {}
-//    	assertFalse(airport.getHanger().contains(plane));
-//    	assertEquals(airport.getHanger().size(), 0);
-//    	assertFalse(plane.atAirport());
-//    }
+    public void UserStory4() throws PlaneException {
+    	Plane plane = new Plane();
+    	Weather mockWeather = mock(Weather.class);
+    	Airport airport = new Airport(mockWeather);
+    	when(mockWeather.isStormy()).thenReturn(true);
+    	try { airport.instructToLand(plane); } catch (AirportException e) {}
+    	assertFalse(airport.getHanger().contains(plane));
+    	assertEquals(airport.getHanger().size(), 0);
+    	assertFalse(plane.atAirport());
+    }
 }
