@@ -9,13 +9,13 @@ public class Airport {
 	
 	public Airport(Weather weather) {
 		this.weather 	= weather;
-		this.hanger 	=  new ArrayList<Plane>();
+		this.hanger 	= new ArrayList<Plane>();
 		this.capacity 	= DEFAULT_CAPACITY;
  	}
 	
 	public Airport(Weather weather, int capacity) {
 		this.weather	 = weather;
-		this.hanger		 =  new ArrayList<Plane>();
+		this.hanger		 = new ArrayList<Plane>();
 		this.capacity 	 = capacity;
  	}
 	
@@ -52,5 +52,4 @@ public class Airport {
 			throw new AirportException("Departure cannot happen. Plane is not at airport!"); 
 		}
 	}
-	
 }
