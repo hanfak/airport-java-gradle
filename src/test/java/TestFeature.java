@@ -73,21 +73,21 @@ public class TestFeature {
     /*As an air traffic controller 
     To ensure safety 
     I want to prevent landing when the airport is full */
-//    @Test
-//    public void UserStory5() throws PlaneException, AirportException {
-//    	Plane plane1 = new Plane();
-//    	Plane plane2 = new Plane();
-//    	Weather mockWeather = mock(Weather.class);
-//    	Airport airport = new Airport(mockWeather);
-//    	when(mockWeather.isStormy()).thenReturn(false);
-//    	airport.instructToLand(plane1);
-//    	try { airport.instructToLand(plane2); } catch (AirportException e) {}
-//    	assertFalse(airport.getHanger().contains(plane2));
-//    	assertTrue(airport.getHanger().contains(plane1));
-//    	assertEquals(airport.getHanger().size(), 1);
-//    	assertTrue(plane1.atAirport());
-//    	assertFalse(plane2.atAirport());
-//    }
+    @Test
+    public void UserStory5() throws PlaneException, AirportException {
+    	Plane plane1 = new Plane();
+    	Plane plane2 = new Plane();
+    	Weather mockWeather = mock(Weather.class);
+    	Airport airport = new Airport(mockWeather);
+    	when(mockWeather.isStormy()).thenReturn(false);
+    	airport.instructToLand(plane1);
+    	try { airport.instructToLand(plane2); } catch (AirportException e) {}
+    	assertFalse(airport.getHanger().contains(plane2));
+    	assertTrue(airport.getHanger().contains(plane1));
+    	assertEquals(airport.getHanger().size(), 1);
+    	assertTrue(plane1.atAirport());
+    	assertFalse(plane2.atAirport());
+    }
     
     
 }

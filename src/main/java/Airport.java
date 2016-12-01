@@ -18,6 +18,9 @@ public class Airport {
 		if ( weather.isStormy() ) { 
 			throw new AirportException("Landing denied. Weather is stormy!"); 
 		}
+		if (hanger.size() >= 1) {
+			throw new AirportException("Landing denied. Airport Full!");
+		}
 		plane.land();
 		hanger.add(plane);
 	}
