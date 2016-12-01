@@ -15,12 +15,7 @@ public class Airport {
 	}
 	
 	public void instructToLand(Plane plane) throws PlaneException, AirportException{
-		if ( weather.isStormy() ) { 
-			throw new AirportException("Landing denied. Weather is stormy!"); 
-		}
-		if (hanger.size() >= 1) {
-			throw new AirportException("Landing denied. Airport Full!");
-		}
+		checkPlaneCanLand();
 		plane.land();
 		hanger.add(plane);
 	}
@@ -31,5 +26,14 @@ public class Airport {
 		}
 		plane.depart();
 		hanger.remove(plane);
+	}
+	
+	private void checkPlaneCanLand() throws AirportException{
+		if ( weather.isStormy() ) { 
+			throw new AirportException("Landing denied. Weather is stormy!"); 
+		}
+		if (hanger.size() >= 1) {
+			throw new AirportException("Landing denied. Airport Full!");
+		}
 	}
 }
