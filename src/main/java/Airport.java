@@ -8,13 +8,13 @@ public class Airport {
 	
 	public Airport(Weather weather){
 		this.weather = weather;
-		hanger =  new ArrayList<Plane>();
+		this.hanger =  new ArrayList<Plane>();
  	}
 	
 	public List<Plane> getHanger() {
 		return hanger;
 	}
-	
+
 	public void instructToLand(Plane plane) throws PlaneException, AirportException{
 		checkPlaneCanLand();
 		plane.land();
