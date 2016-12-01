@@ -25,25 +25,25 @@ public class TestAirport {
 	 }
 	 
 	 @Test
-	 public void InstructToLandExists() throws PlaneException, AirportException{
+	 public void instructToLandExists() throws PlaneException, AirportException{
 		 airport.instructToLand(plane);
 	 }
 	 
 	 @Test
-	 public void StorePlaneInHangerWhenLanded() throws PlaneException, AirportException{
+	 public void storePlaneInHangerWhenLanded() throws PlaneException, AirportException{
 		 airport.instructToLand(plane);
 
 		 assertEquals(airport.getHanger().get(0), plane);
 	 }
 	 
 	 @Test
-	 public void InstructToLandCallsLandOnPlane() throws PlaneException, AirportException {
+	 public void instructToLandCallsLandOnPlane() throws PlaneException, AirportException {
 		 airport.instructToLand(plane);
 		 verify(plane).land();
 	 }
 	 
 	 @Test
-	 public void InstructToLandCallsIsStormyOnPlane() throws PlaneException, AirportException {
+	 public void instructToLandCallsIsStormy() throws PlaneException, AirportException {
 		 airport.instructToLand(plane);
 		 verify(mockWeather).isStormy();
 	 }
@@ -58,12 +58,14 @@ public class TestAirport {
 	 }
 	 
 	 @Test
-	 public void InstructToDepartExists() throws PlaneException, AirportException{
-		 airport.instructToDepart(plane);
+	 public void nstructToDepartExists() throws PlaneException{
+		 try {
+			airport.instructToDepart(plane);
+		} catch (AirportException e) {}
 	 }
 	 
 	 @Test
-	 public void RemovePlaneFromHangerWhenDeparted() throws PlaneException, AirportException {
+	 public void removePlaneFromHangerWhenDeparted() throws PlaneException, AirportException {
 		 airport.instructToLand(plane);
 		 airport.instructToDepart(plane);
 		 
@@ -71,23 +73,37 @@ public class TestAirport {
 	 }
 	 
 	 @Test
-	 public void InstructToDepartCallsDepartOnPlane() throws PlaneException, AirportException {
+	 public void instructToDepartCallsDepartOnPlane() throws PlaneException, AirportException {
+		 airport.instructToLand(plane);
 		 airport.instructToDepart(plane);
 		 verify(plane).depart();
 	 }
 	 
 	 @Test
-	 public void InstructToDepartCallsIsStormyOnPlane() throws PlaneException, AirportException {
-		 airport.instructToDepart(plane);
+	 public void instructToDepartCallsIsStormy() throws PlaneException{
+		 when(mockWeather.isStormy()).thenReturn(true);
+		 try {
+			airport.instructToDepart(plane);
+		} catch (AirportException e) {}
 		 verify(mockWeather).isStormy();
 	 }
 	 
 	 @Test
 	 public void throwsErrorWhenDepartingInStorm() throws AirportException, PlaneException{
+		 when(mockWeather.isStormy()).thenReturn(false);
+		 airport.instructToLand(plane);
 		 when(mockWeather.isStormy()).thenReturn(true);
-		 
 		 thrown.expect(AirportException.class);
 	     thrown.expectMessage("Departure denied. Weather is stormy!");
+	     airport.instructToDepart(plane);
+	 }
+	 
+	 @Test
+	 public void throwsErrorIfDepartWhenNotAirport() throws AirportException, PlaneException{
+		 when(mockWeather.isStormy()).thenReturn(false);
+		 
+		 thrown.expect(AirportException.class);
+	     thrown.expectMessage("Departure cannot happen. Plane is not at airport!");
 	     airport.instructToDepart(plane);
 	 }
 	 

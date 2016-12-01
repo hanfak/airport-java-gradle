@@ -25,6 +25,9 @@ public class Airport {
 		if ( weather.isStormy() ) { 
 			throw new AirportException("Departure denied. Weather is stormy!"); 
 		}
+		if (!hanger.contains(plane)){
+			throw new AirportException("Departure cannot happen. Plane is not at airport!"); 
+		}
 		plane.depart();
 		hanger.remove(plane);
 	}
