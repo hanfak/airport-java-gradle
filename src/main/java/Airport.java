@@ -4,11 +4,19 @@ import java.util.List;
 public class Airport {
 	private List<Plane> hanger;
 	private Weather weather;
+	private int capacity;
 	private int DEFAULT_CAPACITY = 1;
 	
-	public Airport(Weather weather){
-		this.weather = weather;
-		this.hanger =  new ArrayList<Plane>();
+	public Airport(Weather weather) {
+		this.weather 	= weather;
+		this.hanger 	=  new ArrayList<Plane>();
+		this.capacity 	= DEFAULT_CAPACITY;
+ 	}
+	
+	public Airport(Weather weather, int capacity) {
+		this.weather	 = weather;
+		this.hanger		 =  new ArrayList<Plane>();
+		this.capacity 	 = capacity;
  	}
 	
 	public List<Plane> getHanger() {
@@ -31,7 +39,7 @@ public class Airport {
 		if ( weather.isStormy() ) { 
 			throw new AirportException("Landing denied. Weather is stormy!"); 
 		}
-		if (hanger.size() >= DEFAULT_CAPACITY) {
+		if (hanger.size() >= capacity) {
 			throw new AirportException("Landing denied. Airport Full!");
 		}
 	}

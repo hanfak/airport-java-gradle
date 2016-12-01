@@ -89,5 +89,26 @@ public class TestFeature {
     	assertFalse(plane2.hasLanded());
     }
     
+    /*As the system designer
+	So that the software can be used for many different airports
+	I would like a default airport capacity that can be overridden as appropriate */
+    @Test
+    public void UserStory6() throws PlaneException, AirportException {
+    	Plane plane1 = new Plane();
+    	Plane plane2 = new Plane();
+    	Plane plane3 = new Plane();
+    	Plane plane4 = new Plane();
+    	Weather mockWeather = mock(Weather.class);
+    	Airport airport = new Airport(mockWeather, 3);
+    	when(mockWeather.isStormy()).thenReturn(false);
+	    airport.instructToLand(plane1);
+	    airport.instructToLand(plane2);
+	    airport.instructToLand(plane3);
+    	try { airport.instructToLand(plane4); } catch (AirportException e) {}
+    	assertEquals(airport.getHanger().size(), 3);
+    	assertFalse(airport.getHanger().contains(plane4));
+    	assertFalse(plane4.hasLanded());
+    }
+    
     
 }

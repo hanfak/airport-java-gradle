@@ -110,11 +110,21 @@ public class TestAirport {
 	 @Test
 	 public void throwsErrorWhenPlaneLandsInFullAirport() throws AirportException, PlaneException {
 		 when(mockWeather.isStormy()).thenReturn(false);
-		 airport = 	new Airport(mockWeather);
 		 airport.instructToLand(plane);
 		 thrown.expect(AirportException.class);
 	     thrown.expectMessage("Landing denied. Airport Full!");
 		 airport.instructToLand(plane);
 	 }
-
+	 
+	 @Test
+	 public void throwsErrorWhenPlaneLandsInFullAirportWithVariedCapacity() throws AirportException, PlaneException {
+		 when(mockWeather.isStormy()).thenReturn(false);
+		 airport = 	new Airport(mockWeather, 20);
+		 for (int i = 0; i < 20; i++) {
+			 airport.instructToLand(plane);
+		 }
+		 thrown.expect(AirportException.class);
+	     thrown.expectMessage("Landing denied. Airport Full!");
+		 airport.instructToLand(plane);
+	 }
 }
