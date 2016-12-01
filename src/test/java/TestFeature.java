@@ -20,7 +20,7 @@ public class TestFeature {
         airport.instructToLand(plane);
         assertEquals(1, airport.getHanger().size());
         assertEquals(plane, airport.getHanger().get(0));
-        assertEquals(true, plane.atAirport());
+        assertEquals(true, plane.hasLanded());
     }
     
     /*As an air traffic controller 
@@ -36,7 +36,7 @@ public class TestFeature {
     	airport.instructToLand(plane);
     	airport.instructToDepart(plane);
     	assertFalse(airport.getHanger().contains(plane));
-    	assertFalse(plane.atAirport());
+    	assertFalse(plane.hasLanded());
     }
     
     /*As an air traffic controller 
@@ -52,7 +52,7 @@ public class TestFeature {
     	when(mockWeather.isStormy()).thenReturn(true);
     	try { airport.instructToDepart(plane); } catch (AirportException e) {}
     	assertTrue(airport.getHanger().contains(plane));
-    	assertTrue(plane.atAirport());
+    	assertTrue(plane.hasLanded());
     }
     
     /* As an air traffic controller 
@@ -67,7 +67,7 @@ public class TestFeature {
     	try { airport.instructToLand(plane); } catch (AirportException e) {}
     	assertFalse(airport.getHanger().contains(plane));
     	assertEquals(airport.getHanger().size(), 0);
-    	assertFalse(plane.atAirport());
+    	assertFalse(plane.hasLanded());
     }
     
     /*As an air traffic controller 
@@ -85,8 +85,8 @@ public class TestFeature {
     	assertFalse(airport.getHanger().contains(plane2));
     	assertTrue(airport.getHanger().contains(plane1));
     	assertEquals(airport.getHanger().size(), 1);
-    	assertTrue(plane1.atAirport());
-    	assertFalse(plane2.atAirport());
+    	assertTrue(plane1.hasLanded());
+    	assertFalse(plane2.hasLanded());
     }
     
     

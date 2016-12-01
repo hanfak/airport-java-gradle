@@ -1,26 +1,26 @@
 
 public class Plane {
-	private Boolean atAirportStatus;
+	private Boolean atLandedStatus;
 	
 	public Plane() {
-		atAirportStatus = false;
+		atLandedStatus = false;
 	}
 	
 	public void land() throws PlaneException {
-		if (atAirportStatus==true) {
+		if (atLandedStatus==true) {
 			throw new PlaneException("Plane already landed!");
 		} 
-		atAirportStatus = true;
+		atLandedStatus = true;
 	}
 	
 	public void depart() throws PlaneException {
-		if (atAirportStatus==false) {
+		if (atLandedStatus==false) {
 			throw new PlaneException("Plane still in air: land plane first to depart!");
 		}
-		atAirportStatus = false;
+		atLandedStatus = false;
 	}
 	
-	public Boolean atAirport() {
-		return atAirportStatus;
+	public Boolean hasLanded() {
+		return atLandedStatus;
 	}
 }
