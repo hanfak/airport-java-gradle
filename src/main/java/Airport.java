@@ -16,28 +16,32 @@ public class Airport {
 	}
 
 	public void instructToLand(Plane plane) throws PlaneException, AirportException{
-		checkPlaneCanLand();
+		checkCanLand();
 		plane.land();
 		hanger.add(plane);
 	}
 
 	public void instructToDepart(Plane plane) throws PlaneException, AirportException {
-		if ( weather.isStormy() ) { 
-			throw new AirportException("Departure denied. Weather is stormy!"); 
-		}
-		if (!hanger.contains(plane)){
-			throw new AirportException("Departure cannot happen. Plane is not at airport!"); 
-		}
+		checkCanDepart(plane);
 		plane.depart();
 		hanger.remove(plane);
 	}
 	
-	private void checkPlaneCanLand() throws AirportException{
+	private void checkCanLand() throws AirportException{
 		if ( weather.isStormy() ) { 
 			throw new AirportException("Landing denied. Weather is stormy!"); 
 		}
 		if (hanger.size() >= DEFAULT_CAPACITY) {
 			throw new AirportException("Landing denied. Airport Full!");
+		}
+	}
+	
+	private void checkCanDepart(Plane plane) throws AirportException{
+		if ( weather.isStormy() ) { 
+			throw new AirportException("Departure denied. Weather is stormy!"); 
+		}
+		if (!hanger.contains(plane)){
+			throw new AirportException("Departure cannot happen. Plane is not at airport!"); 
 		}
 	}
 	
