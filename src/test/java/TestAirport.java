@@ -24,23 +24,23 @@ public class TestAirport {
 		 new Airport(mockWeather);
 	 }
 	 
-//	 @Test
-//	 public void InstructToLandExists() throws PlaneException{
-//		 airport.instructToLand(plane);
-//	 }
-//	 
-//	 @Test
-//	 public void StorePlaneInHangerWhenLanded() throws PlaneException{
-//		 airport.instructToLand(plane);
-//
-//		 assertEquals(airport.getHanger().get(0), plane);
-//	 }
-//	 
-//	 @Test
-//	 public void InstructToLandCallsLandOnPlane() throws PlaneException {
-//		 airport.instructToLand(plane);
-//		 verify(plane).land();
-//	 }
+	 @Test
+	 public void InstructToLandExists() throws PlaneException, AirportException{
+		 airport.instructToLand(plane);
+	 }
+	 
+	 @Test
+	 public void StorePlaneInHangerWhenLanded() throws PlaneException, AirportException{
+		 airport.instructToLand(plane);
+
+		 assertEquals(airport.getHanger().get(0), plane);
+	 }
+	 
+	 @Test
+	 public void InstructToLandCallsLandOnPlane() throws PlaneException, AirportException {
+		 airport.instructToLand(plane);
+		 verify(plane).land();
+	 }
 	 
 	 @Test
 	 public void InstructToDepartExists() throws PlaneException, AirportException{
